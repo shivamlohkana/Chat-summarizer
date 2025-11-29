@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat Summarizer — Anti-Gravity Edition</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <!-- JSZip for zip reading (client-side) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Background Particles -->
+  <div id="particles"></div>
+
+  <main class="container">
+
+    <header class="hero">
+      <h1 class="glitch-text" data-text="Chat Summarizer">Chat Summarizer</h1>
+      <p class="subtitle">Anti-Gravity AI Analysis System</p>
+    </header>
+
+    <!-- INPUT CARD -->
+    <section class="card input-card float-anim">
+      <div class="card-glow"></div>
+      <div class="card-content">
+
+        <label class="label">Upload .txt OR .zip file</label>
+
+        <div class="row">
+          <div class="file-upload-wrapper">
+            <input id="fileInput" type="file" accept=".txt,.zip" class="file-input" />
+            <button class="btn secondary magnetic">Choose File</button>
+            <span id="fileName" class="file-name">No file chosen</span>
+          </div>
+
+          <button id="loadSample" class="btn secondary magnetic">Load Sample</button>
+        </div>
+
+        <textarea id="textArea" placeholder="Paste chat logs here..."></textarea>
+
+        <div id="zipFilesList" class="muted small"></div>
+
+        <div class="controls">
+          <div class="slider-container">
+            <label>Summary Length: <span id="summaryLenLabel" class="highlight">3</span></label>
+            <input id="summaryLength" type="range" min="1" max="8" value="3" />
+          </div>
+
+          <div class="action-buttons">
+            <button id="analyzeBtn" class="btn primary magnetic">
+              <span class="btn-text">Analyze & Summarize</span>
+              <div class="btn-glare"></div>
+            </button>
+
+            <button id="downloadBtn" class="btn outline magnetic" disabled>
+              <span class="btn-text">Download</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESULTS CARD -->
+    <section class="card results-card float-anim delay-1">
+      <div class="card-glow"></div>
+      <div class="card-content">
+
+        <div class="result-block">
+          <h2><span class="icon">⚡</span> Summary</h2>
+          <div id="summaryOutput" class="box">
+            <p class="placeholder-text">Waiting for input...</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+
+          <div class="result-block">
+            <h2><span class="icon">🔑</span> Keywords</h2>
+            <div id="keywordsOutput" class="tags"></div>
+          </div>
+
+          <div class="result-block">
+            <h2><span class="icon">📊</span> Statistics</h2>
+            <div id="statsOutput" class="stats-box"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="muted small">
+      <span class="pulse">●</span> System Online — Client-Side Processing
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
